@@ -1,0 +1,29 @@
+CRITICAL - 2020-12-05 07:44:44 --> Argument 2 passed to CodeIgniter\Router\RouteCollection::resource() must be of the type array or null, string given, called in /Applications/XAMPP/xamppfiles/htdocs/mtbs/app/Config/Routes.php on line 35
+#0 /Applications/XAMPP/xamppfiles/htdocs/mtbs/app/Config/Routes.php(35): CodeIgniter\Router\RouteCollection->resource('mtbs', 'C_DataAnak/AllD...')
+#1 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/CodeIgniter.php(780): require('/Applications/X...')
+#2 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/CodeIgniter.php(364): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+#3 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 /Applications/XAMPP/xamppfiles/htdocs/mtbs/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#5 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/Commands/Server/rewrite.php(34): require_once('/Applications/X...')
+#6 {main}
+CRITICAL - 2020-12-05 08:22:14 --> Call to undefined method App\Controllers\Pasien::findAll()
+#0 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/CodeIgniter.php(918): App\Controllers\Pasien->index()
+#1 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasien))
+#2 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /Applications/XAMPP/xamppfiles/htdocs/mtbs/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/Commands/Server/rewrite.php(34): require_once('/Applications/X...')
+#5 {main}
+CRITICAL - 2020-12-05 08:22:17 --> Call to undefined method App\Controllers\Pasien::findAll()
+#0 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/CodeIgniter.php(918): App\Controllers\Pasien->index()
+#1 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasien))
+#2 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /Applications/XAMPP/xamppfiles/htdocs/mtbs/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/Commands/Server/rewrite.php(34): require_once('/Applications/X...')
+#5 {main}
+CRITICAL - 2020-12-05 08:22:40 --> Call to undefined method App\Controllers\Pasien::findAll()
+#0 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/CodeIgniter.php(918): App\Controllers\Pasien->index()
+#1 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/CodeIgniter.php(404): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasien))
+#2 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/CodeIgniter.php(312): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 /Applications/XAMPP/xamppfiles/htdocs/mtbs/public/index.php(45): CodeIgniter\CodeIgniter->run()
+#4 /Applications/XAMPP/xamppfiles/htdocs/mtbs/system/Commands/Server/rewrite.php(34): require_once('/Applications/X...')
+#5 {main}
