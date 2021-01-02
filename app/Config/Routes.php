@@ -35,6 +35,7 @@ $routes->setAutoRoute(true);
 $routes->resource('pasien');
 $routes->resource('perawat');
 $routes->post('/login', 'Login::validateUser');
+$routes->post('/perawat/create', 'Perawat::createPerawat');
 
 /**
  * --------------------------------------------------------------------

@@ -14,12 +14,15 @@ class Login extends BaseController
     $model = new PerawatModel();
     $username = $this->request->getPost('uname');
     $password = $this->request->getPost('password');
-    $data = $model->getWhere(['username' => $username])->getResult();
+    $data = $model->where(['username' => $username])->first();
     if ($data) {
-      password_verify($password, $data['password']);
-      return $this->respond('Successfully Logged In', 200);
+      if (password_verify($password, $data['password'])) {
+        return $this->respond('Successfully Logged In.', 200);
+      } else {
+        return $this->fail('Invalid Username or Password.', 401);
+      }
     } else {
-      return $this->fail('Invalid Username or Password', 401);
+      return $this->fail('Invalid Username or Password.', 401);
     }
   }
 }

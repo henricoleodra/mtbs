@@ -28,12 +28,6 @@ class Pasien extends ResourceController
     }
   }
 
-  public function michCupu()
-  {
-    $data = array('nama' => 'mich');
-    return $this->setResponseFormat('json')->respond($data);
-  }
-
   // public function create()
   // {
   //   $model = new PasienModel();

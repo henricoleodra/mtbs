@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 05, 2020 at 03:27 PM
+-- Generation Time: Jan 02, 2021 at 03:34 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Database: `mtbs`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `version` varchar(255) NOT NULL,
+  `class` text NOT NULL,
+  `group` varchar(255) NOT NULL,
+  `namespace` varchar(255) NOT NULL,
+  `time` int(11) NOT NULL,
+  `batch` int(11) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -79,19 +95,23 @@ CREATE TABLE `mtbs_pasien` (
   `namaAnak` varchar(100) NOT NULL,
   `tanggalLahir` date NOT NULL,
   `provinsi` int(11) NOT NULL,
+  `kota` varchar(100) NOT NULL,
   `alamat` varchar(100) NOT NULL,
   `rt` int(11) NOT NULL,
   `rw` int(11) NOT NULL,
-  `kelurahanDesa` int(11) NOT NULL,
-  `kotaKecamatan` int(11) NOT NULL
+  `kelurahanDesa` varchar(100) NOT NULL,
+  `kecamatan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `mtbs_pasien`
 --
 
-INSERT INTO `mtbs_pasien` (`idPasien`, `namaIbu`, `namaAnak`, `tanggalLahir`, `provinsi`, `alamat`, `rt`, `rw`, `kelurahanDesa`, `kotaKecamatan`) VALUES
-(1, 'Friska', 'Michael', '2020-12-01', 1, 'Coba', 1, 2, 12, 13);
+INSERT INTO `mtbs_pasien` (`idPasien`, `namaIbu`, `namaAnak`, `tanggalLahir`, `provinsi`, `kota`, `alamat`, `rt`, `rw`, `kelurahanDesa`, `kecamatan`) VALUES
+(1, 'Friska', 'Michael', '2020-12-01', 1, '', 'Coba', 1, 2, 'Contoh Kelurahan Desa', 'Contoh Kota Kecamatan'),
+(2, 'Jane Doe', 'John Doe', '2020-12-01', 2, '', 'Alamat', 1, 2, 'Kel Des', 'Kot Kec'),
+(3, 'Ibu', 'Anak', '2020-12-01', 4, '', 'Alamat Rumah', 1, 3, 'Kelurahan Desa', 'Kota Kecamatan'),
+(4, 'Ibu Haha', 'Anak Haha', '2020-12-08', 7, '', 'Alamat Haha', 4, 7, 'Desa', 'Kecamatan');
 
 -- --------------------------------------------------------
 
@@ -165,8 +185,17 @@ CREATE TABLE `mtbs_penyakit` (
 CREATE TABLE `mtbs_perawat` (
   `idPerawat` int(11) NOT NULL,
   `namaPerawat` varchar(300) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(300) NOT NULL,
   `idPuskesmas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mtbs_perawat`
+--
+
+INSERT INTO `mtbs_perawat` (`idPerawat`, `namaPerawat`, `username`, `password`, `idPuskesmas`) VALUES
+(6, 'Henrico', 'henrico', '$2y$10$fbB1CQuNnA/XQR8IjdAva.9/80F1wSOJri0XtQqQzWb/uler6IaK6', 1);
 
 -- --------------------------------------------------------
 
@@ -182,6 +211,12 @@ CREATE TABLE `mtbs_puskesmas` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `mtbs_gejala`
@@ -230,6 +265,12 @@ ALTER TABLE `mtbs_puskesmas`
 --
 
 --
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `mtbs_gejala`
 --
 ALTER TABLE `mtbs_gejala`
@@ -251,7 +292,7 @@ ALTER TABLE `mtbs_obat`
 -- AUTO_INCREMENT for table `mtbs_pasien`
 --
 ALTER TABLE `mtbs_pasien`
-  MODIFY `idPasien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idPasien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `mtbs_pemeriksaan`
@@ -263,7 +304,7 @@ ALTER TABLE `mtbs_pemeriksaan`
 -- AUTO_INCREMENT for table `mtbs_perawat`
 --
 ALTER TABLE `mtbs_perawat`
-  MODIFY `idPerawat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPerawat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `mtbs_puskesmas`
