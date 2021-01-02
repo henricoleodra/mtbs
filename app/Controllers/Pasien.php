@@ -5,6 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\PasienModel;
+use CodeIgniter\HTTP\Response;
 
 class Pasien extends ResourceController
 {
@@ -25,6 +26,12 @@ class Pasien extends ResourceController
     } else {
       return $this->failNotFound('No Data Found with id ' . $id);
     }
+  }
+
+  public function michCupu()
+  {
+    $data = array('nama' => 'mich');
+    return $this->setResponseFormat('json')->respond($data);
   }
 
   // public function create()
