@@ -28,3 +28,5 @@ class Perawat extends BaseController
     return $this->respond("Successfully Insert Perawat", 201);
   }
 }
+
+

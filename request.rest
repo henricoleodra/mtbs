@@ -1,0 +1,2 @@
+
+curl -X POST -d 'namaIbu=Hai' -d 'namaAnak=Hai' -d 'tanggalLahir=2018-01-30' -d 'provinsi=JawaBarat' -d 'kota=Bandung' -d 'alamat=Hai' -d 'rt=1' -d 'rw=2' -d 'kelurahanDesa=Hai' -d 'kecamatan=Hai' http://localhost:8080/pasien/create 
