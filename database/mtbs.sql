@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 02, 2021 at 03:34 PM
+-- Generation Time: Jan 09, 2021 at 10:01 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -24,22 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
---
-
-CREATE TABLE `migrations` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `version` varchar(255) NOT NULL,
-  `class` text NOT NULL,
-  `group` varchar(255) NOT NULL,
-  `namespace` varchar(255) NOT NULL,
-  `time` int(11) NOT NULL,
-  `batch` int(11) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `mtbs_gejala`
 --
 
@@ -47,6 +31,14 @@ CREATE TABLE `mtbs_gejala` (
   `idGejala` int(11) NOT NULL,
   `namaGejala` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mtbs_gejala`
+--
+
+INSERT INTO `mtbs_gejala` (`idGejala`, `namaGejala`) VALUES
+(1, 'Tidak Bisa Minum Atau Menyusu ?'),
+(2, 'Memuntahkan semua makanan dan atau minuman');
 
 -- --------------------------------------------------------
 
@@ -80,7 +72,8 @@ CREATE TABLE `mtbs_klasifikasi_obat` (
 
 CREATE TABLE `mtbs_obat` (
   `idObat` int(11) NOT NULL,
-  `namaObat` varchar(200) NOT NULL
+  `namaObat` varchar(200) NOT NULL,
+  `pemberian` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -94,7 +87,7 @@ CREATE TABLE `mtbs_pasien` (
   `namaIbu` varchar(100) NOT NULL,
   `namaAnak` varchar(100) NOT NULL,
   `tanggalLahir` date NOT NULL,
-  `provinsi` int(11) NOT NULL,
+  `provinsi` varchar(50) NOT NULL,
   `kota` varchar(100) NOT NULL,
   `alamat` varchar(100) NOT NULL,
   `rt` int(11) NOT NULL,
@@ -108,10 +101,11 @@ CREATE TABLE `mtbs_pasien` (
 --
 
 INSERT INTO `mtbs_pasien` (`idPasien`, `namaIbu`, `namaAnak`, `tanggalLahir`, `provinsi`, `kota`, `alamat`, `rt`, `rw`, `kelurahanDesa`, `kecamatan`) VALUES
-(1, 'Friska', 'Michael', '2020-12-01', 1, '', 'Coba', 1, 2, 'Contoh Kelurahan Desa', 'Contoh Kota Kecamatan'),
-(2, 'Jane Doe', 'John Doe', '2020-12-01', 2, '', 'Alamat', 1, 2, 'Kel Des', 'Kot Kec'),
-(3, 'Ibu', 'Anak', '2020-12-01', 4, '', 'Alamat Rumah', 1, 3, 'Kelurahan Desa', 'Kota Kecamatan'),
-(4, 'Ibu Haha', 'Anak Haha', '2020-12-08', 7, '', 'Alamat Haha', 4, 7, 'Desa', 'Kecamatan');
+(1, 'Friska', 'Michael', '2020-12-01', '1', '', 'Coba', 1, 2, 'Contoh Kelurahan Desa', 'Contoh Kota Kecamatan'),
+(2, 'Jane Doe', 'John Doe', '2020-12-01', '2', '', 'Alamat', 1, 2, 'Kel Des', 'Kot Kec'),
+(3, 'Ibu', 'Anak', '2020-12-01', '4', '', 'Alamat Rumah', 1, 3, 'Kelurahan Desa', 'Kota Kecamatan'),
+(4, 'Ibu Haha', 'Anak Haha', '2020-12-08', '7', '', 'Alamat Haha', 4, 7, 'Desa', 'Kecamatan'),
+(5, 'Hai', 'Hai', '2018-01-30', '0', 'Bandung', 'Hai', 1, 2, 'Hai', 'Hai');
 
 -- --------------------------------------------------------
 
@@ -165,6 +159,24 @@ CREATE TABLE `mtbs_pemeriksaan_obat` (
   `idObat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `mtbs_pemeriksaan_obat`
+--
+
+INSERT INTO `mtbs_pemeriksaan_obat` (`idPemeriksaan`, `idObat`) VALUES
+(1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mtbs_pemeriksaan_tindakan`
+--
+
+CREATE TABLE `mtbs_pemeriksaan_tindakan` (
+  `idPemeriksaan` int(11) NOT NULL,
+  `idTindakan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
@@ -208,15 +220,20 @@ CREATE TABLE `mtbs_puskesmas` (
   `namaPuskesmas` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mtbs_tindakan`
+--
+
+CREATE TABLE `mtbs_tindakan` (
+  `idTindakan` int(11) NOT NULL,
+  `namaTindakan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `mtbs_gejala`
@@ -261,20 +278,20 @@ ALTER TABLE `mtbs_puskesmas`
   ADD PRIMARY KEY (`idPuskesmas`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indexes for table `mtbs_tindakan`
 --
+ALTER TABLE `mtbs_tindakan`
+  ADD PRIMARY KEY (`idTindakan`);
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT for dumped tables
 --
-ALTER TABLE `migrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `mtbs_gejala`
 --
 ALTER TABLE `mtbs_gejala`
-  MODIFY `idGejala` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idGejala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mtbs_klasifikasi`
@@ -292,7 +309,7 @@ ALTER TABLE `mtbs_obat`
 -- AUTO_INCREMENT for table `mtbs_pasien`
 --
 ALTER TABLE `mtbs_pasien`
-  MODIFY `idPasien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idPasien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `mtbs_pemeriksaan`
@@ -311,6 +328,12 @@ ALTER TABLE `mtbs_perawat`
 --
 ALTER TABLE `mtbs_puskesmas`
   MODIFY `idPuskesmas` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `mtbs_tindakan`
+--
+ALTER TABLE `mtbs_tindakan`
+  MODIFY `idTindakan` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

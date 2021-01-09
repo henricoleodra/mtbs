@@ -2,26 +2,31 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\API\ResponseTrait;
 use App\Models\PemeriksaanModel;
+use App\Models\PemeriksaanObatModel;
+use CodeIgniter\API\ResponseTrait;
 
 class Pemeriksaan extends BaseController
 {
   use ResponseTrait;
 
   protected $pemeriksaanModel;
+  protected $pemeriksaanObatModel;
 
   public function __construct()
   {
     $this->pemeriksaanModel = new PemeriksaanModel();
+    $this->pemeriksaanObatModel = new PemeriksaanObatModel();
   }
 
-  public function getAllPemeriksaan(){
+  public function getAllPemeriksaan()
+  {
     $data = $this->pemeriksaanModel->findAll();
     return $this->respond($data, 200);
   }
 
-  public function createPemeriksaan(){
+  public function createPemeriksaan()
+  {
     $data = [
       'tanggalPemeriksaan' => $this->request->getPost('tanggalPemeriksaan'),
       'suhu' => $this->request->getPost('suhu'),
@@ -37,4 +42,3 @@ class Pemeriksaan extends BaseController
     return $this->respond("Successfully Insert Pemeriksaan", 201);
   }
 }
-

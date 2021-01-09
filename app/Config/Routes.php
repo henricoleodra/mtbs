@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Controllers\Pemeriksaan;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -36,8 +38,10 @@ $routes->resource('perawat');
 $routes->post('/login', 'Login::validateUser');
 $routes->post('/perawat/create', 'Perawat::createPerawat');
 $routes->get('/pasien/lists', 'Pasien::getAllPasien');
-$routes->post('/pasien/create', 'Pasien::createPasien' );
-
+$routes->post('/pasien/create', 'Pasien::createPasien');
+$routes->get('/try', 'Pemeriksaan::getAll');
+$routes->post('/try/insert', 'Pemeriksaan::insertTry');
+$routes->get('/pemeriksaan/lists', 'Pemeriksaan::getAllPemeriksaan');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

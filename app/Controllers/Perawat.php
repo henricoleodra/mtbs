@@ -16,6 +16,11 @@ class Perawat extends BaseController
     $this->perawatModel = new PerawatModel();
   }
 
+  public function getAllPerawat(){
+    $data = $this->perawatModel->findAll();
+    return $this->respond($data, 200);
+  }
+
   public function createPerawat()
   {
     $data = [
