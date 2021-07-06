@@ -8,5 +8,5 @@ class TindakanModel extends Model
 {
   protected $table = 'mtbs_tindakan';
   protected $primaryKey = 'idTindakan';
-  protected $allowedFields = ['namaTindakan'];
+  protected $allowedFields = ['namaTindakan', 'idPenyakit'];
 }

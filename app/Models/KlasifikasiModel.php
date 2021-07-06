@@ -8,5 +8,5 @@ class KlasifikasiModel extends Model
 {
   protected $table = 'mtbs_klasifikasi';
   protected $primaryKey = 'idKlasifikasi';
-  protected $allowedFields = ['namaKlasifikasi', 'idPenyakit'];
+  protected $allowedFields = ['namaKlasifikasi', 'status', 'idPenyakit'];
 }

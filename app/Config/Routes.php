@@ -3,6 +3,7 @@
 namespace Config;
 
 use App\Controllers\Pemeriksaan;
+use App\Controllers\Pasien;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
@@ -34,14 +35,24 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Request-Headers: GET,POST,OPTIONS,DELETE,PUT");
 $routes->resource('perawat');
-$routes->post('/login', 'Login::validateUser');
-$routes->post('/perawat/create', 'Perawat::createPerawat');
-$routes->get('/pasien/lists', 'Pasien::getAllPasien');
-$routes->post('/pasien/create', 'Pasien::createPasien');
-$routes->get('/try', 'Pemeriksaan::getAll');
-$routes->post('/try/insert', 'Pemeriksaan::insertTry');
-$routes->get('/pemeriksaan/lists', 'Pemeriksaan::getAllPemeriksaan');
+$routes->post('login', 'Login::validateUser');
+$routes->get('pemeriksaan/lists/(:num)', 'Pemeriksaan::getPemeriksaan/$1');
+$routes->get('pemeriksaan/detail/(:num)', 'Pemeriksaan::getPemeriksaanDetail/$1');
+$routes->get('pemeriksaan/klasifikasi/(:num)', 'Pemeriksaan::getPemeriksaanKlasifikasi/$1');
+$routes->get('pemeriksaan/tindakan/(:num)', 'Pemeriksaan::getPemeriksaanTindakan/$1');
+$routes->post('akhiripemeriksaan', 'Pemeriksaan::akhiriPemeriksaan');
+$routes->post('perawat/create', 'Perawat::createPerawat');
+$routes->get('pasien/lists', 'Pasien::getAllPasien');
+$routes->get('pasien/detail/(:num)', 'Pasien::getPasien/$1');
+$routes->get('pasien/kunjungan/(:num)', 'Pasien::getPasienKunjungan/$1');
+$routes->post('pasien/create', 'Pasien::createPasien');
+$routes->get('try', 'Pemeriksaan::getAll');
+$routes->post('try/insert', 'Pemeriksaan::insertTry');
+$routes->get('pemeriksaan/lists', 'Pemeriksaan::getAllPemeriksaan');
 /**
  * --------------------------------------------------------------------
  * Additional Routing
